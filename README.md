@@ -1,3 +1,19 @@
+# Link for the download
+
+```
+https://www.anaconda.com/download/
+```
+
+```
+https://code.visualstudio.com/download
+```
+
+```
+https://git-scm.com/downloads
+```
+
+
+
 # Create a virtual environment
 
 ```
@@ -7,6 +23,11 @@ conda create -p env python=3.8 -y
 source activate ./env
 ```
 
+## if you are using command prompt so the command will be for the actiavte the env
+
+```
+conda activate <absaoulte path of your env folder>
+```
 
 
 # Git commands
