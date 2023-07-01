@@ -45,3 +45,4 @@ class DataIngestion():
    
         except Exception as ex:
             raise Exception
+        
