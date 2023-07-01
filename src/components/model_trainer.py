@@ -5,8 +5,10 @@ from sklearn.linear_model import LinearRegression, Ridge,Lasso,ElasticNet
 from src.exception import CustomException
 from src.logger import logging
 
-from src.utils import save_models
+from src.utils import save_model
 from src.utils import evaluate_model
+from src.components.data_ingestion import DataIngestion
+from src.components.data_transformation import DataTransformation
 
 from dataclasses import dataclass
 import sys
@@ -56,7 +58,7 @@ class ModelTrainer:
             print('\n====================================================================================\n')
             logging.info(f'Best Model Found , Model Name : {best_model_name} , R2 Score : {best_model_score}')
 
-            save_models(
+            save_model(
                  file_path=self.model_trainer_config.trained_model_file_path,
                  obj=best_model
             )
@@ -65,3 +67,12 @@ class ModelTrainer:
         except Exception as e:
             logging.info('Exception occured at Model Training')
             raise CustomException(e,sys)
+        
+if __name__ == '__main__':
+    obj=DataIngestion()
+    train_data_path,test_data_path=obj.initiate_data_ingestion()
+    data_transformation = DataTransformation()
+    train_arr,test_arr,_=data_transformation.initaite_data_transformation(train_data_path,test_data_path)
+    model_trainer=ModelTrainer()
+    model_trainer.initate_model_training(train_arr,test_arr)
+     
