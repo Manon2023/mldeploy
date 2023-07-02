@@ -2,7 +2,7 @@ import sys
 import os
 from src.exception import CustomException
 from src.logger import logging
-from src.utils import load_object
+from src.utils import load_model
 import pandas as pd
 
 
@@ -15,8 +15,8 @@ class PredictPipeline:
             preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
             model_path=os.path.join('artifacts','model.pkl')
 
-            preprocessor=load_object(preprocessor_path)
-            model=load_object(model_path)
+            preprocessor=load_model(preprocessor_path)
+            model=load_model(model_path)
 
             data_scaled=preprocessor.transform(features)
 

@@ -23,7 +23,7 @@ def save_model(file_path,obj):
     except Exception as e:
         raise CustomException(e,sys)
 
-def load_model():
+def load_model(file_path):
     try:
         with open(file_path,'rb') as file_obj:
             return pickle.load(file_obj)
@@ -33,7 +33,7 @@ def load_model():
 
     
 
-def evaluate_model():
+def evaluate_model(file_path):
     try:
         dir_path = os.path.dirname(file_path)
 
